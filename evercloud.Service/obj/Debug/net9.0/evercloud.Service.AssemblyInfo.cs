@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("evercloud.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1ad401e9dcf49d09ddf64775a1e82944954e79a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea2ea5ceb2fd1c5659cdc01fbe1eaded47726fde")]
 [assembly: System.Reflection.AssemblyProductAttribute("evercloud.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("evercloud.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

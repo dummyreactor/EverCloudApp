@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("evercloud.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f823566506d8b3f6615eb64a66508d6a1a493f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea2ea5ceb2fd1c5659cdc01fbe1eaded47726fde")]
 [assembly: System.Reflection.AssemblyProductAttribute("evercloud.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("evercloud.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
