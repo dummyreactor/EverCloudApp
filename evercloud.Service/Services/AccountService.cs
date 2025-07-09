@@ -45,18 +45,13 @@
 //}
 
 using evercloud.DataAccess.Repositories;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 
 namespace evercloud.Service.Services
 {
-    public class AccountService : IAccountService
+    public class AccountService(IAccountRepository accountRepository) : IAccountService
     {
-        private readonly IAccountRepository _accountRepository;
-
-        public AccountService(IAccountRepository accountRepository)
-        {
-            _accountRepository = accountRepository;
-        }
+        private readonly IAccountRepository _accountRepository = accountRepository;
 
         public Users? FindByEmail(string email)
         {

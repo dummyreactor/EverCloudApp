@@ -1,17 +1,13 @@
 ﻿using evercloud.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using evercloud.Domain.Interfaces;
 
 namespace evercloud.DataAccess.Repositories
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository(UserManager<Users> userManager) : IAccountRepository
     {
-        private readonly UserManager<Users> _userManager;
-
-        public AccountRepository(UserManager<Users> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<Users> _userManager = userManager;
 
         public async Task<Users?> FindByEmailAsync(string email)
         {

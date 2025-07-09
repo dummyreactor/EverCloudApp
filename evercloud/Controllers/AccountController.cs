@@ -164,23 +164,17 @@
 //}
 
 
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 using evercloud.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace evercloud.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController(SignInManager<Users> signInManager, IAccountService accountService) : Controller
     {
-        private readonly SignInManager<Users> signInManager;
-        private readonly IAccountService accountService;
-
-        public AccountController(SignInManager<Users> signInManager, IAccountService accountService)
-        {
-            this.signInManager = signInManager;
-            this.accountService = accountService;
-        }
+        private readonly SignInManager<Users> signInManager = signInManager;
+        private readonly IAccountService accountService = accountService;
 
         public IActionResult Login()
         {
@@ -215,7 +209,7 @@ namespace evercloud.Controllers
         {
             if (ModelState.IsValid)
             {
-                Users user = new Users
+                Users user = new()
                 {
                     FullName = model.Name,
                     Email = model.Email,

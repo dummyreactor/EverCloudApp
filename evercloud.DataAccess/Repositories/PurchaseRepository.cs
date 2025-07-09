@@ -1,18 +1,13 @@
 ﻿using evercloud.DataAccess.Data;
 using evercloud.Domain.Models;
-using evercloud.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using evercloud.Domain.Interfaces;  
 
 namespace evercloud.DataAccess.Repositories
 {
-    public class PurchaseRepository : IPurchaseRepository
+    public class PurchaseRepository(AppDbContext context) : IPurchaseRepository
     {
-        private readonly AppDbContext _context;
-
-        public PurchaseRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         public async Task<IEnumerable<Purchase>> GetAllAsync()
         {

@@ -1,22 +1,16 @@
 ﻿using evercloud.Domain.Models;
-using evercloud.Domain.Repositories;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 
 namespace evercloud.Service.Services
 {
-    public class PurchaseService : IPurchaseService
+    public class PurchaseService(IPurchaseRepository purchaseRepository) : IPurchaseService
     {
-        private readonly IPurchaseRepository _purchaseRepository;
-
-        public PurchaseService(IPurchaseRepository purchaseRepository)
-        {
-            _purchaseRepository = purchaseRepository;
-        }
+        private readonly IPurchaseRepository _purchaseRepository = purchaseRepository;
 
         public async Task<List<Purchase>> GetAllPurchasesAsync()
         {
             var purchases = await _purchaseRepository.GetAllAsync();
-            return purchases.ToList(); // Ensures return type matches
+            return [.. purchases]; // Ensures return type matches
         }
 
         public async Task<Purchase?> GetPurchaseByIdAsync(int id)
@@ -45,10 +39,9 @@ namespace evercloud.Service.Services
         public async Task<List<Purchase>> GetUserPurchasesAsync(string userId)
         {
             var purchases = await _purchaseRepository.GetAllAsync();
-            return purchases
+            return [.. purchases
                 .Where(p => p.UserId == userId)
-                .OrderByDescending(p => p.PurchaseDate)
-                .ToList();
+                .OrderByDescending(p => p.PurchaseDate)];
         }
 
         public async Task<bool> CancelPurchaseByUserIdAsync(string userId)

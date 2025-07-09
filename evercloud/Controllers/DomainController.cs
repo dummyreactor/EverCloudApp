@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 using evercloud.ViewModels;
 
 namespace evercloud.Controllers

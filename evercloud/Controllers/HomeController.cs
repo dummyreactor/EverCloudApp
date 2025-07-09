@@ -1,17 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 using evercloud.Domain.Models;
 
 namespace evercloud.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IPlanService planService) : Controller
     {
-        private readonly IPlanService _planService;
-
-        public HomeController(IPlanService planService)
-        {
-            _planService = planService;
-        }
+        private readonly IPlanService _planService = planService;
 
         public async Task<IActionResult> Index()
         {

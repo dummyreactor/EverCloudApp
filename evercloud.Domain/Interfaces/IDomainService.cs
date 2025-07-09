@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace evercloud.Service.Interfaces
+namespace evercloud.Domain.Interfaces
 {
     public interface IDomainService
     {

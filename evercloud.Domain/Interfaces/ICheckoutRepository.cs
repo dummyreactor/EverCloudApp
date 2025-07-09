@@ -1,6 +1,6 @@
 ﻿using evercloud.Domain.Models;
 
-namespace evercloud.Domain.Repositories
+namespace evercloud.Domain.Interfaces
 {
     public interface ICheckoutRepository
     {

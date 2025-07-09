@@ -1,7 +1,6 @@
 using evercloud.DataAccess.Data;
 using evercloud.DataAccess.Repositories;
-using evercloud.Domain.Repositories;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 using evercloud.Service.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

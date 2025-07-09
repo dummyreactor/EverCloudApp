@@ -1,18 +1,13 @@
 ﻿using evercloud.Domain.Models;
-using evercloud.Domain.Repositories;
+using evercloud.Domain.Interfaces;
 using evercloud.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace evercloud.DataAccess.Repositories
 {
-    public class CheckoutRepository : ICheckoutRepository
+    public class CheckoutRepository(AppDbContext context) : ICheckoutRepository
     {
-        private readonly AppDbContext _context;
-
-        public CheckoutRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         public async Task<List<Purchase>> GetAllPurchasesAsync()
         {

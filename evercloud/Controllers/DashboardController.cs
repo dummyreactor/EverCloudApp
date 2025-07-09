@@ -2,13 +2,9 @@
 using Microsoft.AspNetCore.Identity;
 namespace evercloud.Controllers
 {
-    public class DashboardController : Controller
+    public class DashboardController(UserManager<Users> userManager) : Controller
     {
-        private readonly UserManager<Users> _userManager;
-        public DashboardController(UserManager<Users> userManager)
-        {
-            _userManager = userManager;
-        }
+        private readonly UserManager<Users> _userManager = userManager;
 
         public async Task<IActionResult> Index()
         {

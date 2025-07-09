@@ -2,24 +2,17 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using evercloud.Domain.Models;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 
 
 namespace evercloud.Controllers
 {
     [Authorize]
-    public class CheckoutController : Controller
+    public class CheckoutController(IPurchaseService purchaseService, UserManager<Users> userManager) : Controller
     {
-        private readonly IPurchaseService _purchaseService;
+        private readonly IPurchaseService _purchaseService = purchaseService;
 
-        private readonly UserManager<Users> _userManager;
-
-        public CheckoutController(IPurchaseService purchaseService, UserManager<Users> userManager)
-        {
-            _purchaseService = purchaseService;
-            _userManager = userManager;
-        }
-
+        private readonly UserManager<Users> _userManager = userManager;
 
         public IActionResult Index(string plan)
         {

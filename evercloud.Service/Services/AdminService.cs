@@ -1,21 +1,20 @@
 ﻿using evercloud.Domain.Models;
-using evercloud.Service.Interfaces;
-using Microsoft.AspNetCore.Hosting;
+using evercloud.Domain.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using System.Text.Json;
 
 namespace evercloud.Service.Services
 {
-    public class AdminService : IAdminService
+    public class AdminService(UserManager<Users> userManager, string jsonPath) : IAdminService
     {
-        private readonly UserManager<Users> _userManager;
-        private readonly string _jsonPath;
+        private readonly UserManager<Users> _userManager = userManager;
+        private readonly string _jsonPath = jsonPath;
 
-        public AdminService(UserManager<Users> userManager, string jsonPath)
+        // ✅ Cached, shared options object
+        private static readonly JsonSerializerOptions _jsonOptions = new()
         {
-            _userManager = userManager;
-            _jsonPath = jsonPath;
-        }
+            WriteIndented = true
+        };
 
         public Task<List<Users>> GetAllUsersAsync()
         {
@@ -25,10 +24,10 @@ namespace evercloud.Service.Services
         public async Task<List<Plan>> LoadPlansAsync()
         {
             if (!File.Exists(_jsonPath))
-                return new List<Plan>();
+                return [];
 
             var json = await File.ReadAllTextAsync(_jsonPath);
-            return JsonSerializer.Deserialize<List<Plan>>(json) ?? new List<Plan>();
+            return JsonSerializer.Deserialize<List<Plan>>(json, _jsonOptions) ?? [];
         }
 
         public async Task<bool> UpdatePlansAsync(List<Plan> updatedPlans)
@@ -45,11 +44,7 @@ namespace evercloud.Service.Services
                 }
             }
 
-            var json = JsonSerializer.Serialize(existingPlans, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-
+            var json = JsonSerializer.Serialize(existingPlans, _jsonOptions);
             await File.WriteAllTextAsync(_jsonPath, json);
             return true;
         }

@@ -1,6 +1,6 @@
 ﻿using evercloud.Domain.Models;
 
-namespace evercloud.Service.Interfaces
+namespace evercloud.Domain.Interfaces
 {
     public interface ICheckoutService
     {

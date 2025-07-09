@@ -1,6 +1,26 @@
+# Visual Studio
 .vs/
-bin/
-obj/
-evercloud.csproj.user
+*.user
 *.suo
-*.vsp
+
+# VS Code
+.vscode/
+
+# Build output (recursive)
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.sourcelink.json
+
+
+# Rider IDE
+.idea/
+
+# Others
+*.log
+*.tmp
+*.cache
+
+# Project-specific junk
+evercloud.csproj.user

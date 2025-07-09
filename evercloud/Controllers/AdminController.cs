@@ -1,21 +1,15 @@
 ﻿using evercloud.Domain.Models;
-using evercloud.Service.Interfaces;
+using evercloud.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace evercloud.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class AdminController : Controller
+    public class AdminController(IAdminService adminService, IPurchaseService purchaseService) : Controller
     {
-        private readonly IAdminService _adminService;
-        private readonly IPurchaseService _purchaseService;
-
-        public AdminController(IAdminService adminService, IPurchaseService purchaseService)
-        {
-            _adminService = adminService;
-            _purchaseService = purchaseService;
-        }
+        private readonly IAdminService _adminService = adminService;
+        private readonly IPurchaseService _purchaseService = purchaseService;
 
         public IActionResult Index() => View();
 
@@ -28,7 +22,7 @@ namespace evercloud.Controllers
         public async Task<IActionResult> Purchases()
         {
             var purchases = await _purchaseService.GetAllPurchasesAsync();
-            purchases = purchases.OrderByDescending(p => p.PurchaseDate).ToList();
+            purchases = [.. purchases.OrderByDescending(p => p.PurchaseDate)];
             return View(purchases);
         }
 

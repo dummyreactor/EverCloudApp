@@ -1,7 +1,8 @@
 ﻿using evercloud.Domain.Models;
 using System.Threading.Tasks;
 
-namespace evercloud.DataAccess.Repositories
+//namespace evercloud.DataAccess.Repositories
+namespace evercloud.Domain.Interfaces
 {
     public interface IAccountRepository
     {

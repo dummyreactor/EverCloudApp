@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace evercloud.Domain.Repositories
+namespace evercloud.Domain.Interfaces
 {
     public interface IPurchaseRepository
     {
