@@ -1,0 +1,60 @@
+﻿@model evercloud.Domain.Models.Plan
+@{
+    ViewData["Title"] = "Premium Plan";
+}
+
+<section class="premium-plan-section">
+    <div class="container plan-container">
+
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="premium-title">Premium Plan</h1>
+            <p class="premium-subtitle">Best for growing businesses that need more resources and performance.</p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="text-center mb-5">
+            <h2 class="premium-price">@Model.PriceMain<span class="premium-price-sub"> /month</span></h2>
+            <div class="premium-offer my-2">🚀 Save <strong>@Model.Badge</strong> for a limited time!</div>
+            <p class="premium-note">Flexible billing. Cancel anytime.</p>
+            <a class="btn btn-outline-purple fw-bold px-5 py-3 fs-5 rounded-pill mt-3" asp-controller="Checkout" asp-action="Index" asp-route-plan="Premium">Buy Now</a>
+
+
+        </div>
+
+        <!-- Descriptive Features -->
+        <div class="row justify-content-center text-center fs-5 mb-5">
+            <div class="col-md-8">
+                <ul class="list-unstyled premium-features">
+                    <li><span class="premium-check">✔</span> Host <strong>5 websites</strong> — great for agencies and growing portfolios.</li>
+                    <li><span class="premium-check">✔</span> <strong>Unlimited bandwidth</strong> — handle high traffic with no slowdown.</li>
+                    <li><span class="premium-check">✔</span> <strong>150 GB SSD storage</strong> — more room for large files, backups, and media.</li>
+                    <li><span class="premium-check">✔</span> <strong>4 GB RAM</strong> — better performance for web apps and databases.</li>
+                    <li><span class="premium-check">✔</span> <strong>Priority Support</strong> — faster response times with 24/7 chat and email.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="row text-center premium-benefits">
+            <div class="col-md-4 mb-4">
+                <h4>Enhanced Security</h4>
+                <p>Daily backups, WAF, malware scanning included.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>Developer Tools</h4>
+                <p>SSH access, staging environments, Git integrations.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>Faster Hosting</h4>
+                <p>More resources and caching for high-speed delivery.</p>
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="text-center m-5">
+            <a href="@Url.Action("Index", "Home")#plans" class="premium-back-link">← Back to All Plans</a>
+        </div>
+
+    </div>
+</section>

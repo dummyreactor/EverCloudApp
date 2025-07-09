@@ -1,0 +1,53 @@
+﻿@using evercloud.Domain.Models
+@model List<Plan>
+@{
+    ViewData["Title"] = "Manage Plans";
+}
+
+<div class="container mt-5">
+    <a class="d-block mb-4" asp-controller="Admin" asp-action="Index">←back</a>
+    <h2 class="text-danger mb-4">Manage Plans</h2>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Message"]
+        </div>
+    }
+
+    <form asp-action="ManagePlans" method="post">
+        <div class="row">
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 bg-dark text-white border-secondary">
+                        <div class="card-header bg-secondary text-white">
+                            <h5>@Model[i].Title</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Price</label>
+                                <input type="text" class="form-control text-dark"
+                                       name="updatedPlans[@i].PriceMain"
+                                       value="@Model[i].PriceMain" />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Badge</label>
+                                <input type="text" class="form-control text-dark"
+                                       name="updatedPlans[@i].Badge"
+                                       value="@Model[i].Badge" />
+                            </div>
+
+                            <!-- ✅ Required: Preserve Title for matching in controller -->
+                            <input type="hidden"
+                                   name="updatedPlans[@i].Title"
+                                   value="@Model[i].Title" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Save Changes</button>
+    </form>
+</div>

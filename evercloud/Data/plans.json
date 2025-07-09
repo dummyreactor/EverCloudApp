@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Entry",
+    "priceMain": "$14",
+    "priceSub": "/month",
+    "badge": "10% off",
+    "badgeClass": "bg-light text-dark rounded-pill fw-bold px-2 py-1 badge--small d-inline-block mt-2 ms-4",
+    "headerClass": "p-3 card--cyan position-relative",
+    "buttonClass": "btn btn-outline-info w-100 rounded-pill p-3 fw-bold",
+    "buttonText": "VIEW PLAN",
+    "features": [
+      "1 Website",
+      "10 GB Bandwidth",
+      "50 GB SSD Storage",
+      "1 GB RAM",
+      "Basic Support"
+    ]
+  },
+  {
+    "title": "Premium",
+    "priceMain": "$29",
+    "priceSub": "/month",
+    "badge": "15% off",
+    "badgeClass": "bg-light text-dark rounded-pill fw-bold px-2 py-1 badge--small d-inline-block mt-2 ms-4",
+    "headerClass": "p-3 card--purple position-relative",
+    "buttonClass": "btn btn-outline-purple w-100 rounded-pill p-3 fw-bold",
+    "buttonText": "VIEW PLAN",
+    "features": [
+      "10 Websites",
+      "500 GB Bandwidth",
+      "200 GB SSD Storage",
+      "4 GB RAM",
+      "Priority Support"
+    ]
+  },
+  {
+    "title": "Pro",
+    "priceMain": "$49",
+    "priceSub": "/month",
+    "badge": "20% off",
+    "badgeClass": "bg-light text-dark rounded-pill fw-bold px-2 py-1 badge--small d-inline-block mt-2 ms-4",
+    "headerClass": "p-3 card--orange position-relative",
+    "buttonClass": "btn btn-outline-warning w-100 rounded-pill p-3 fw-bold",
+    "buttonText": "VIEW PLAN",
+    "features": [
+      "Unlimited Websites",
+      "Unlimited Bandwidth",
+      "1 TB SSD Storage",
+      "8 GB RAM",
+      "24/7 Support"
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+﻿@model evercloud.Domain.Models.Plan
+@{
+    ViewData["Title"] = "Pro Plan";
+}
+
+<section class="pro-plan-section">
+    <div class="container plan-container">
+
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="pro-title">Pro Plan</h1>
+            <p class="pro-subtitle">Built for growing businesses that demand high performance and advanced features.</p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="text-center mb-5">
+            <h2 class="pro-price">@Model.PriceMain<span class="pro-price-sub"> /month</span></h2>
+            <div class="pro-offer my-2">🚀 Special Deal: <strong>@Model.Badge</strong> your first 6 months</div>
+            <p class="pro-note">Scale confidently with all the power you need.</p>
+            <a class="btn btn-outline-gold fw-bold px-5 py-3 fs-5 rounded-pill mt-3" asp-controller="Checkout" asp-action="Index" asp-route-plan="Pro">Buy Now</a>
+
+        </div>
+
+        <!-- Descriptive Features -->
+        <div class="row justify-content-center text-center fs-5 mb-5">
+            <div class="col-md-8">
+                <ul class="list-unstyled pro-features">
+                    <li><span class="pro-check">✔</span> Host <strong>Unlimited websites</strong> — support multiple projects and clients.</li>
+                    <li><span class="pro-check">✔</span> <strong>Unlimited bandwidth</strong> — traffic spikes? No problem.</li>
+                    <li><span class="pro-check">✔</span> <strong>500 GB SSD storage</strong> — store large applications, media, and backups.</li>
+                    <li><span class="pro-check">✔</span> <strong>8 GB RAM</strong> — blazing fast performance under heavy load.</li>
+                    <li><span class="pro-check">✔</span> <strong>Premium Support</strong> — 24/7 expert help via phone, chat, and email.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="row text-center pro-benefits">
+            <div class="col-md-4 mb-4">
+                <h4>Advanced Security</h4>
+                <p>Includes daily backups, DDoS protection, and WAF.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>Priority Resources</h4>
+                <p>Faster response times and isolated CPU access.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>Developer-Friendly</h4>
+                <p>SSH access, staging environments, and Git deployments.</p>
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="text-center m-5">
+            <a href="@Url.Action("Index", "Home")#plans" class="pro-back-link">← Back to All Plans</a>
+        </div>
+
+    </div>
+</section>

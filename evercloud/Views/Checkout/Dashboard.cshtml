@@ -1,0 +1,92 @@
+﻿@using evercloud.Domain.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Purchase>
+@{
+    ViewData["Title"] = "Your Active Plan";
+    var plan = Model.FirstOrDefault();
+    string planColor = "text-white";
+
+    if (plan != null)
+    {
+        switch (plan.Plan.ToLower())
+        {
+            case "entry":
+                planColor = "text-aqua";
+                break;
+            case "premium":
+                planColor = "text-purple";
+                break;
+            case "pro":
+                planColor = "text-orange";
+                break;
+        }
+    }
+}
+
+<section id="dashboard">
+<section class="container text-white py-5 d-flex justify-content-center">
+
+        <div class="rounded-4 p-5 shadow-lg border border-secondary" style="max-width: 500px; background-color: #C0F5FF">
+            <h2 class="text-dark fw-bold text-center mb-3">Your Active Plan</h2>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger text-center">@ViewBag.Error</div>
+                }
+
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-success text-center">@ViewBag.Message</div>
+                }
+
+                @if (plan == null)
+                {
+                    <p class="text-dark text-center">You have not purchased any plans yet.</p>
+                }
+                else
+                {
+                    <div class="card bg-dark border-light rounded-4 mx-auto" style="max-width: 700px;">
+                        <div class="card-body text-center">
+                            <h4 class="card-title fw-bold @planColor">
+                                @plan.Plan Plan
+                            </h4>
+                            <p class="card-text text-white-50 mt-2">
+                                Purchased on <span class="fw-semibold">@plan.PurchaseDate.ToString("yyyy-MM-dd HH:mm")</span>
+                            </p>
+                            <div class="badge bg-success px-3 py-2 fs-6 mb-3">Active</div>
+                            <div>
+                                <button type="button" class="badge bg-danger border-0 fs-6 px-3 py-2" data-bs-toggle="modal" data-bs-target="#cancelPlanModal">Cancel Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        
+</section>
+
+<!-- ✅ Cancel Plan Modal -->
+<div class="modal fade" id="cancelPlanModal" tabindex="-1" aria-labelledby="cancelPlanModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white border border-secondary rounded-4">
+            <div class="modal-header border-bottom border-secondary">
+                <h5 class="modal-title fw-bold" id="cancelPlanModalLabel">Confirm Cancellation</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to cancel your <strong>@plan?.Plan</strong> plan? This action cannot be undone.
+            </div>
+            <div class="modal-footer border-top border-secondary">
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                <form asp-action="Cancel" method="post">
+                    <button type="submit" class="btn btn-danger rounded-pill">Yes, Cancel Plan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+

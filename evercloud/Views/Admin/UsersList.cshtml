@@ -1,0 +1,31 @@
+﻿@using evercloud.Domain.Models
+@model IEnumerable<Users>
+@{
+    ViewData["Title"] = "Registered Users";
+}
+
+<div class="container py-4 text-white">
+    <a class="d-block mb-4" asp-controller="Admin" asp-action="Index">←back</a>
+    <h2 class="mb-4 text-success fw-bold">Registered Users</h2>
+    <table class="table table-dark table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Email Confirmed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.FullName</td>
+                    <td>@user.Email</td>
+                    <td>@user.UserName</td>
+                    <td>@user.EmailConfirmed</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

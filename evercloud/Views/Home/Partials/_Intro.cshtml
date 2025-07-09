@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Domain Search";
+}
+
+<section class="py-5 intro">
+    <div class="container text-center text-white">
+        <h2 class="fw-bold mb-3 display-5">Starting at just $9/month</h2>
+        <p class="text-secondary mb-5 fs-4">Find the perfect cloud plan for your needs</p>
+
+        <form id="domainForm" class="d-flex justify-content-center" method="post">
+            @Html.AntiForgeryToken()
+            <div class="position-relative w-50 rounded-pill shadow-light search-input">
+                <input id="domainSearch"
+                       name="domainName"
+                       type="search"
+                       class="form-control rounded-pill shadow-sm border-0 p-3 fs-5 pe-5"
+                       placeholder="Search domain name..."
+                       aria-label="Search" />   
+                <button id="searchButton"
+                        type="submit"
+                        class="btn btn-info position-absolute top-50 end-0 translate-middle-y rounded-pill px-5 py-3 me-2">
+                    <img class="search-svg me-2" src="images/search.svg" alt="search icon" />
+                    Search
+                </button>
+            </div>
+        </form>
+
+        <!-- 🔽 This is the placeholder for the result -->
+        <div id="searchResult" class="mt-4 text-center"></div>
+
+        <!-- Example domain prices -->
+        <div class="domains container--small">
+            <ul class="row list-unstyled mt-5 g-4 justify-content-center">
+                <li class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="bg-light text-dark rounded-pill text-center py-2 px-4 fw-bold badge">.com $9</div>
+                </li>
+                <li class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="bg-light text-dark rounded-pill text-center fw-bold py-2 px-4 badge">.sg $10</div>
+                </li>
+                <li class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="bg-light text-dark rounded-pill text-center fw-bold py-2 px-4 badge">.space $11</div>
+                </li>
+                <li class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="bg-light text-dark rounded-pill text-center fw-bold py-2 px-4 badge">.info $14</div>
+                </li>
+                <li class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="bg-light text-dark rounded-pill text-center fw-bold py-2 px-4 badge">.net $15</div>
+                </li>
+                <li class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+                    <div class="bg-light text-dark rounded-pill text-center fw-bold py-2 px-4 badge">.xyz $10</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

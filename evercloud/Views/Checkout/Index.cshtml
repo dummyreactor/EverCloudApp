@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+    var plan = ViewData["Plan"]?.ToString() ?? "Unknown";
+}
+
+<section class="container text-white py-5">
+    <div class="bg-dark rounded-4 p-5 shadow-lg border border-secondary">
+        <h2 class="text-center mb-4 fw-bold">🧾 Checkout – @plan Plan</h2>
+
+        <div class="mb-4">
+            <h4 class="text-gold">Plan Selected:</h4>
+            <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
+                <span class="fs-5">🌟 @plan Hosting Plan</span>
+                <span class="fs-4 text-gold fw-bold">
+                    @{
+                        var price = plan switch
+                        {
+                            "Entry" => "$9",
+                            "Premium" => "$29",
+                            "Pro" => "$49",
+                            _ => "$0"
+                        };
+                        @price
+                    }
+                    <small class="text-white">/month</small>
+                </span>
+            </div>
+            <div class="text-white small">Special Offer: <strong>15% OFF</strong> your first 6 months</div>
+        </div>
+
+        <form asp-controller="Checkout" asp-action="Confirm" method="post" class="text-center">
+            <input type="hidden" name="plan" value="@plan" />
+
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6 text-start">
+                    <label class="form-label text-white">Cardholder Name</label>
+                    <input type="text" name="CardholderName" class="form-control bg-dark text-white border-secondary" required />
+
+                    <label class="form-label mt-3 text-white">Card Number</label>
+                    <input type="text" name="CardNumber" class="form-control bg-dark text-white border-secondary" maxlength="19" required />
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <label class="form-label text-white">Expiry (MM/YY)</label>
+                            <input type="text" name="Expiry" class="form-control bg-dark text-white border-secondary" maxlength="5" placeholder="MM/YY" required />
+                        </div>
+                        <div class="col">
+                            <label class="form-label text-white">CVV</label>
+                            <input type="text" name="CVV" class="form-control bg-dark text-white border-secondary" maxlength="4" required />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg px-5 py-2 rounded-pill mt-3">Confirm & Pay</button>
+        </form>
+    </div>
+</section>

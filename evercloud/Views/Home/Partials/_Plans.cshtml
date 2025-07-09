@@ -1,0 +1,32 @@
+﻿<div id="plans" class="container mt-5 mb-5">
+    <div id="plans-container" class="row g-4">
+        @foreach (var plan in Model)
+        {
+            <article class="col-12 col-md-12 col-lg-4">
+                <div class="card card-hover text-white rounded-4 shadow-dark card--container">
+                    <header class="@plan.HeaderClass position-relative p-3">
+                        <h3 class="fs-6 fw-semibold position-absolute top-0 start-0 m-3">@plan.Title</h3>
+                        <div class="text-start mt-4 px-4">
+                            <h4 class="fs-1 fw-bold d-inline">@plan.PriceMain</h4>
+                            <span class="fs-6">@plan.PriceSub</span>
+                            <span class="@plan.BadgeClass">@plan.Badge</span>
+                        </div>
+                    </header>
+                    <div class="card-body bg-dark text-center">
+                        <ul class="list-unstyled mt-3 mb-4 fs-6 text-start mx-auto" style="max-width: 240px">
+                            @foreach (var feature in plan.Features ?? Enumerable.Empty<string>())
+                            {
+                                <li class="mb-4 fs-5">
+                                    <span class="text-info me-2">✔</span>@feature
+                                </li>
+                            }
+                        </ul>
+                        <a class="@plan.ButtonClass" asp-controller="Plans" asp-action="@plan.Title">
+                            @plan.ButtonText
+                        </a>
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+</div>

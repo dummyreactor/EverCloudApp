@@ -1,0 +1,283 @@
+﻿.plan-container {
+    border: 1px dashed white;
+    border-radius: 100px;
+}
+
+/* Entry Plan Page Styles */
+.entry-plan-section {
+    background-color: #1e1f22;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 4rem 0;
+}
+
+.entry-title {
+    color: #00d4ff;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.entry-subtitle {
+    font-size: 1.5rem;
+    color: #cfcfcf;
+}
+
+.entry-badge {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.entry-price {
+    color: #00d4ff;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.entry-price-sub {
+    font-size: 1.25rem;
+    color: #cfcfcf;
+}
+
+.entry-note {
+    font-style: italic;
+    color: #cfcfcf;
+}
+
+.entry-features li {
+    margin-bottom: 1.5rem;
+    color: #cfcfcf;
+    text-align: left;
+}
+
+.entry-check {
+    color: #00d4ff;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 6px rgba(0, 212, 255, 0.5);
+}
+
+.entry-benefits h4 {
+    color: #00d4ff;
+    font-weight: 600;
+}
+
+.entry-benefits p {
+    color: #cfcfcf;
+}
+
+.entry-back-link {
+    color: #00d4ff;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.entry-back-link:hover {
+    text-decoration: underline;
+}
+
+.entry-offer {
+    color: #00d4ff;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: rgba(0, 212, 255, 0.1);
+    border: 1px solid #00d4ff;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+/* Premium Plan Page Styles */
+.premium-plan-section {
+    background-color: #1e1f22;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 4rem 0;
+}
+
+.premium-title {
+    color: #9b51e0;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.premium-subtitle {
+    font-size: 1.5rem;
+    color: #cfcfcf;
+}
+
+.premium-price {
+    color: #9b51e0;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.premium-price-sub {
+    font-size: 1.25rem;
+    color: #cfcfcf;
+}
+
+.premium-offer {
+    color: #9b51e0;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: rgba(155, 81, 224, 0.1);
+    border: 1px solid #9b51e0;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.premium-note {
+    font-style: italic;
+    color: #cfcfcf;
+}
+
+.premium-features li {
+    margin-bottom: 1.5rem;
+    color: #cfcfcf;
+    text-align: left;
+}
+
+.premium-check {
+    color: #9b51e0;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 6px rgba(155, 81, 224, 0.5);
+}
+
+.premium-benefits h4 {
+    color: #9b51e0;
+    font-weight: 600;
+}
+
+.premium-benefits p {
+    color: #cfcfcf;
+}
+
+.premium-back-link {
+    color: #9b51e0;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.premium-back-link:hover {
+      text-decoration: underline;
+}
+
+/* Pro Plan Styles */
+.pro-plan-section {
+    background-color: #1e1f22;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 4rem 0;
+}
+
+.pro-title {
+    color: #f4c542;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.pro-subtitle {
+    font-size: 1.5rem;
+    color: #cfcfcf;
+}
+
+.pro-price {
+    color: #f4c542;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.pro-price-sub {
+    font-size: 1.25rem;
+    color: #cfcfcf;
+}
+
+.pro-note {
+    font-style: italic;
+    color: #cfcfcf;
+}
+
+.pro-offer {
+    color: #f4c542;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: rgba(244, 197, 66, 0.1);
+    border: 1px solid #f4c542;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.pro-features li {
+    margin-bottom: 1.5rem;
+    color: #cfcfcf;
+    text-align: left;
+}
+
+.pro-check {
+    color: #f4c542;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 6px rgba(244, 197, 66, 0.5);
+}
+
+.pro-benefits h4 {
+    color: #f4c542;
+    font-weight: 600;
+}
+
+.pro-benefits p {
+    color: #cfcfcf;
+}
+
+.pro-back-link {
+    color: #f4c542;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+    .pro-back-link:hover {
+        text-decoration: underline;
+    }
+
+/* Button Outline Gold */
+.btn-outline-gold {
+    color: #f4c542;
+    border: 2px solid #f4c542;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover,
+.btn-outline-gold:focus {
+        background-color: #f4c542;
+        color: #000;
+        border-color: #f4c542;
+}
+
+/*DASHBOARD*/
+.text-aqua {
+    color: #00d4ff !important;
+}
+
+.text-purple {
+    color: #9b51e0 !important;
+}
+
+.text-orange {
+    color: #ff9800 !important;
+}

@@ -1,0 +1,59 @@
+﻿@model evercloud.Domain.Models.Plan
+
+@{
+    ViewData["Title"] = "Entry Plan";
+}
+
+<section class="entry-plan-section">
+    <div class="container plan-container">
+
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="entry-title">Entry Plan</h1> 
+            <p class="entry-subtitle">Perfect for individuals and startups launching their first website in the cloud.</p>
+        </div>
+
+        <!-- Pricing -->
+        <div class="text-center mb-5">
+            <h2 class="entry-price">@Model.PriceMain<span class="entry-price-sub"> /month</span></h2>
+            <div class="entry-offer my-2">🔥 Limited Time: <strong>@Model.Badge</strong></div>
+            <p class="entry-note">No hidden fees. Cancel anytime.</p>
+            <a asp-controller="Checkout" asp-action="Index" asp-route-plan="Entry" class="btn btn-info text-dark fw-bold px-5 py-3 fs-5 rounded-pill mt-3">Buy Now</a>
+        </div>
+
+        <!-- Descriptive Features -->
+        <div class="row justify-content-center text-center fs-5 mb-5">
+            <div class="col-md-8">
+                <ul class="list-unstyled entry-features">
+                    <li><span class="entry-check">✔</span> Host <strong>1 website</strong> — perfect for portfolios, blogs, or small business pages.</li>
+                    <li><span class="entry-check">✔</span> <strong>10 GB bandwidth</strong> — supports thousands of monthly visitors without slowdowns.</li>
+                    <li><span class="entry-check">✔</span> <strong>50 GB SSD storage</strong> — fast and reliable space for all your content and media.</li>
+                    <li><span class="entry-check">✔</span> <strong>1 GB RAM</strong> — smooth performance for lightweight apps and CMS like WordPress.</li>
+                    <li><span class="entry-check">✔</span> <strong>Basic Support</strong> — get assistance during business hours via email or chat.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="row text-center entry-benefits">
+            <div class="col-md-4 mb-4">
+                <h4>Easy Deployment</h4>
+                <p>Launch your site in minutes with our guided setup.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>Fast Load Speeds</h4>
+                <p>Built on SSD and optimized for performance.</p>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h4>Secure Environment</h4>
+                <p>Includes basic firewall, auto updates, and monitoring.</p>
+            </div>
+        </div>
+
+        <!-- Back Link -->
+        <div class="text-center m-5">
+            <a href="@Url.Action("Index", "Home")#plans" class="entry-back-link">← Back to All Plans</a>
+        </div>
+
+    </div>
+</section>

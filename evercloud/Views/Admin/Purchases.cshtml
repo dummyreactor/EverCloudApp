@@ -1,0 +1,30 @@
+﻿@using evercloud.Domain.Models
+@model IEnumerable<Purchase>
+
+@{
+    ViewData["Title"] = "All Purchases";
+}
+
+<div class="container py-4 text-white">
+    <a class="d-block mb-4" asp-controller="Admin" asp-action="Index">←back</a>
+    <h2 class="mb-4 text-success">All User Purchases</h2>
+    <table class="table table-dark table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Plan</th>
+                <th>Purchase Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var purchase in Model)
+            {
+                <tr>
+                    <td>@purchase.User?.FullName (@purchase.User?.Email)</td>
+                    <td>@purchase.Plan</td>
+                    <td>@purchase.PurchaseDate.ToString("g")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

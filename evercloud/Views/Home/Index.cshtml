@@ -1,0 +1,57 @@
+﻿@using evercloud.Domain.Models
+@{
+    ViewData["Title"] = "Home";
+}
+
+@model List<Plan>
+
+@await Html.PartialAsync("Partials/_Hero")
+@await Html.PartialAsync("Partials/_Intro")
+@await Html.PartialAsync("Partials/_Plans")
+@await Html.PartialAsync("Partials/_About")
+@await Html.PartialAsync("Partials/_Callout")
+@await Html.PartialAsync("Partials/_Faqs")
+@await Html.PartialAsync("Partials/_Footer")
+@await Html.PartialAsync("Partials/_CareerModal")
+@await Html.PartialAsync("Partials/_SearchAlert")
+
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("domainForm");
+            const input = document.getElementById("domainSearch");
+            const resultDiv = document.getElementById("searchResult");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const domain = input.value.trim();
+                // if (!domain) return;
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+                resultDiv.innerHTML = `
+                    <div class="mt-4 text-info fs-5">
+                        <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                        Checking availability...
+                    </div>`;
+
+                fetch("/Domain/CheckAvailability", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `__RequestVerificationToken=${encodeURIComponent(token)}&domainName=${encodeURIComponent(domain)}`
+                })
+                .then(response => response.text())
+                .then(html => {
+                    resultDiv.innerHTML = html;
+                })
+                .catch(() => {
+                    resultDiv.innerHTML = "<div class='alert alert-danger mt-3'>❌ Something went wrong. Please try again.</div>";
+                });
+            });
+        });
+    </script>
+}

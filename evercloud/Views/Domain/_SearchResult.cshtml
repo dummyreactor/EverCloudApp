@@ -1,0 +1,18 @@
+﻿@model evercloud.ViewModels.DomainResultViewModel
+
+@if (string.IsNullOrWhiteSpace(Model?.Domain))
+{
+    <div class="alert alert-warning text-center">❗ Invalid domain query. Please try again.</div>
+}
+else if (Model.IsAvailable)
+{
+    <div class="alert alert-success rounded-pill d-inline-block px-4 py-3 fs-5 shadow-sm">
+         <strong>@Model.Domain</strong> is <span class="fw-bold text-success">available</span>!
+    </div>
+}
+else
+{
+    <div class="alert alert-danger rounded-pill d-inline-block px-4 py-3 fs-5 shadow-sm">
+         <strong>@Model.Domain</strong> is <span class="fw-bold text-danger">already taken</span>.
+    </div>
+}

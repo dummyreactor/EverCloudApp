@@ -1,0 +1,6 @@
+.vs/
+bin/
+obj/
+evercloud.csproj.user
+*.suo
+*.vsp

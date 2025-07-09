@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container py-5 text-white">
+    <h1 class="mb-4 text-danger">Admin Dashboard</h1>
+    <p class="text-dark">Welcome, You now have elevated access to manage EverCloud.</p>
+
+    <div class="list-group mt-4">
+        <a asp-controller="Admin" asp-action="UsersList" class="list-group-item list-group-item-action bg-dark text-light border-info">
+            View Registered Users
+        </a>
+        <a asp-controller="Admin" asp-action="Purchases" class="list-group-item list-group-item-action bg-dark text-light border-info">
+            View Purchases
+        </a>
+        <a asp-controller="Admin" asp-action="ManagePlans" class="list-group-item list-group-item-action bg-dark text-light border-info">
+            Manage Plans
+        </a>
+    </div>
+</div>
