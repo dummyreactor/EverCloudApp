@@ -6,8 +6,6 @@ namespace evercloud.Controllers
 {
     public class DomainController(IDomainService domainService) : Controller
     {
-        private readonly IDomainService _domainService = domainService;
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckAvailability(string domainName)
@@ -21,7 +19,7 @@ namespace evercloud.Controllers
                 });
             }
 
-            bool isAvailable = await _domainService.IsDomainAvailableAsync(domainName);
+            bool isAvailable = await domainService.IsDomainAvailableAsync(domainName);
 
             var result = new DomainResultViewModel
             {

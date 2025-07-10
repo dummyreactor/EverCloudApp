@@ -8,20 +8,17 @@ namespace evercloud.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController(IAdminService adminService, IPurchaseService purchaseService) : Controller
     {
-        private readonly IAdminService _adminService = adminService;
-        private readonly IPurchaseService _purchaseService = purchaseService;
-
         public IActionResult Index() => View();
 
         public async Task<IActionResult> UsersList()
         {
-            var users = await _adminService.GetAllUsersAsync();
+            var users = await adminService.GetAllUsersAsync();
             return View(users);
         }
 
         public async Task<IActionResult> Purchases()
         {
-            var purchases = await _purchaseService.GetAllPurchasesAsync();
+            var purchases = await purchaseService.GetAllPurchasesAsync();
             purchases = [.. purchases.OrderByDescending(p => p.PurchaseDate)];
             return View(purchases);
         }
@@ -29,14 +26,14 @@ namespace evercloud.Controllers
         [HttpGet]
         public async Task<IActionResult> ManagePlans()
         {
-            var plans = await _adminService.LoadPlansAsync();
+            var plans = await adminService.LoadPlansAsync();
             return View(plans);
         }
 
         [HttpPost]
         public async Task<IActionResult> ManagePlans(List<Plan> updatedPlans)
         {
-            var success = await _adminService.UpdatePlansAsync(updatedPlans);
+            var success = await adminService.UpdatePlansAsync(updatedPlans);
             if (success)
             {
                 TempData["Message"] = "Plans updated successfully.";

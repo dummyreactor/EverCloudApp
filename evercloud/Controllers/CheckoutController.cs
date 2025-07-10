@@ -4,16 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using evercloud.Domain.Models;
 using evercloud.Domain.Interfaces;
 
-
 namespace evercloud.Controllers
 {
     [Authorize]
     public class CheckoutController(IPurchaseService purchaseService, UserManager<Users> userManager) : Controller
     {
-        private readonly IPurchaseService _purchaseService = purchaseService;
-
-        private readonly UserManager<Users> _userManager = userManager;
-
         public IActionResult Index(string plan)
         {
             if (string.IsNullOrEmpty(plan))
@@ -29,10 +24,10 @@ namespace evercloud.Controllers
             if (string.IsNullOrEmpty(plan))
                 return RedirectToAction("Index", "Home");
 
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
 
-            var allPurchases = await _purchaseService.GetAllPurchasesAsync();
+            var allPurchases = await purchaseService.GetAllPurchasesAsync();
             var existingPurchase = allPurchases.FirstOrDefault(p => p.UserId == user.Id);
 
             if (existingPurchase != null)
@@ -47,7 +42,7 @@ namespace evercloud.Controllers
                 Plan = plan
             };
 
-            await _purchaseService.AddPurchaseAsync(purchase);
+            await purchaseService.AddPurchaseAsync(purchase);
 
 
             TempData["Success"] = $"✅ You have successfully subscribed to the {plan} plan!";
@@ -63,13 +58,13 @@ namespace evercloud.Controllers
         [Authorize]
         public async Task<IActionResult> Dashboard()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null) 
                 return Unauthorized();
             
             ViewBag.FullName = user.FullName;
 
-            var allPurchases = await _purchaseService.GetAllPurchasesAsync();
+            var allPurchases = await purchaseService.GetAllPurchasesAsync();
             var purchases = allPurchases
                 .Where(p => p.UserId == user.Id)
                 .OrderByDescending(p => p.PurchaseDate)
@@ -84,10 +79,10 @@ namespace evercloud.Controllers
         [Authorize]
         public async Task<IActionResult> Cancel()
         {
-            var user = await _userManager.GetUserAsync(User);
+            var user = await userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
 
-            var allPurchases = await _purchaseService.GetAllPurchasesAsync();
+            var allPurchases = await purchaseService.GetAllPurchasesAsync();
             var purchase = allPurchases.FirstOrDefault(p => p.UserId == user.Id);
 
             if (purchase == null)
@@ -96,15 +91,11 @@ namespace evercloud.Controllers
                 return RedirectToAction("Dashboard");
             }
 
-            await _purchaseService.DeletePurchaseAsync(purchase.Id);
+            await purchaseService.DeletePurchaseAsync(purchase.Id);
 
 
             TempData["Message"] = "❌ Your plan has been canceled.";
             return RedirectToAction("Dashboard");
         }
-
-       
-
-
     }
 }
