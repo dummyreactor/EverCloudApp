@@ -1,6 +1,4 @@
 ﻿using evercloud.Domain.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace evercloud.Domain.Interfaces
 {

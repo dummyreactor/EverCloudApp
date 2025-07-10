@@ -1,84 +1,35 @@
-﻿//using evercloud.DataAccess.Repositories;
-//using evercloud.Domain.Models;
-//using evercloud.Service.Interfaces;
-//using System.Threading.Tasks;
-
-//namespace evercloud.Service.Services
-//{
-//    public class AccountService : IAccountService
-//    {
-//        private readonly IAccountRepository _accountRepository;
-
-//        public AccountService(IAccountRepository accountRepository)
-//        {
-//            _accountRepository = accountRepository;
-//        }
-
-//        public async Task<Users?> FindByEmailAsync(string email)
-//        {
-//            return await _accountRepository.FindByEmailAsync(email);
-//        }
-
-//        public async Task<Users?> FindByUsernameAsync(string username)
-//        {
-//            return await _accountRepository.FindByUsernameAsync(username);
-//        }
-
-//        public async Task<bool> RegisterUserAsync(Users user, string password)
-//        {
-//            return await _accountRepository.CreateUserAsync(user, password);
-//        }
-
-//        public async Task<bool> ResetPasswordAsync(Users user, string newPassword)
-//        {
-//            bool removed = await _accountRepository.RemovePasswordAsync(user);
-//            if (!removed) return false;
-
-//            return await _accountRepository.AddPasswordAsync(user, newPassword);
-//        }
-
-//        public async Task<bool> DeleteAccountAsync(Users user)
-//        {
-//            return await _accountRepository.DeleteUserAsync(user);
-//        }
-//    }
-//}
-
-using evercloud.DataAccess.Repositories;
-using evercloud.Domain.Interfaces;
+﻿using evercloud.Domain.Interfaces;
 
 namespace evercloud.Service.Services
 {
     public class AccountService(IAccountRepository accountRepository) : IAccountService
     {
-        private readonly IAccountRepository _accountRepository = accountRepository;
-
-        public Users? FindByEmail(string email)
+        public async Task<Users?> FindByEmailAsync(string email)
         {
-            return _accountRepository.FindByEmailAsync(email).Result;
+            return await accountRepository.FindByEmailAsync(email);
         }
 
-        public Users? FindByUsername(string username)
+        public async Task<Users?> FindByUsernameAsync(string username)
         {
-            return _accountRepository.FindByUsernameAsync(username).Result;
+            return await accountRepository.FindByUsernameAsync(username);
         }
 
-        public bool RegisterUser(Users user, string password)
+        public async Task<bool> RegisterUserAsync(Users user, string password)
         {
-            return _accountRepository.CreateUserAsync(user, password).Result;
+            return await accountRepository.CreateUserAsync(user, password);
         }
 
-        public bool ResetPassword(Users user, string newPassword)
+        public async Task<bool> ResetPasswordAsync(Users user, string newPassword)
         {
-            bool removed = _accountRepository.RemovePasswordAsync(user).Result;
+            bool removed = await accountRepository.RemovePasswordAsync(user);
             if (!removed) return false;
 
-            return _accountRepository.AddPasswordAsync(user, newPassword).Result;
+            return await accountRepository.AddPasswordAsync(user, newPassword);
         }
 
-        public bool DeleteAccount(Users user)
+        public async Task<bool> DeleteAccountAsync(Users user)
         {
-            return _accountRepository.DeleteUserAsync(user).Result;
+            return await accountRepository.DeleteUserAsync(user);
         }
     }
 }

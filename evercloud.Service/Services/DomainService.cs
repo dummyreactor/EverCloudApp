@@ -1,8 +1,6 @@
 ﻿using evercloud.Domain.Interfaces;
 using System.Net.Sockets;
 using System.Text;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace evercloud.Service.Services
 {

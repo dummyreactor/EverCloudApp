@@ -1,6 +1,4 @@
-﻿using evercloud.Domain.Models;
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 using evercloud.Domain.Interfaces;
 
 namespace evercloud.DataAccess.Repositories
