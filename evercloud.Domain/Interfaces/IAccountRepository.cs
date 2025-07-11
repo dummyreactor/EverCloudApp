@@ -10,17 +10,3 @@
         Task<bool> DeleteUserAsync(Users user);
     }
 }
-
-//namespace evercloud.Domain.Interfaces
-//{
-//    public interface IAccountRepository
-//    {
-//        Users? FindByEmail(string email);
-//        Users? FindByUsername(string username);
-//        bool CreateUser(Users user, string password);
-//        bool RemovePassword(Users user);
-//        bool AddPassword(Users user, string newPassword);
-//        bool DeleteUser(Users user);
-//    }
-
-//}

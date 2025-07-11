@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("evercloud.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea2ea5ceb2fd1c5659cdc01fbe1eaded47726fde")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dbbfcfa74df1e6b39085fd9249d8e07d48a42d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("evercloud.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("evercloud.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

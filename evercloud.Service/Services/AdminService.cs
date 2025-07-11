@@ -7,9 +7,6 @@ namespace evercloud.Service.Services
 {
     public class AdminService(UserManager<Users> userManager, string jsonPath) : IAdminService
     {
-        private readonly UserManager<Users> _userManager = userManager;
-        private readonly string _jsonPath = jsonPath;
-
         // ✅ Cached, shared options object
         private static readonly JsonSerializerOptions _jsonOptions = new()
         {
@@ -18,15 +15,15 @@ namespace evercloud.Service.Services
 
         public Task<List<Users>> GetAllUsersAsync()
         {
-            return Task.FromResult(_userManager.Users.ToList());
+            return Task.FromResult(userManager.Users.ToList());
         }
 
         public async Task<List<Plan>> LoadPlansAsync()
         {
-            if (!File.Exists(_jsonPath))
+            if (!File.Exists(jsonPath))
                 return [];
 
-            var json = await File.ReadAllTextAsync(_jsonPath);
+            var json = await File.ReadAllTextAsync(jsonPath);
             return JsonSerializer.Deserialize<List<Plan>>(json, _jsonOptions) ?? [];
         }
 
@@ -45,7 +42,7 @@ namespace evercloud.Service.Services
             }
 
             var json = JsonSerializer.Serialize(existingPlans, _jsonOptions);
-            await File.WriteAllTextAsync(_jsonPath, json);
+            await File.WriteAllTextAsync(jsonPath, json);
             return true;
         }
     }
